@@ -17,8 +17,12 @@ const ProductsOverview = ({ navigation }: ShopNavProps<'Product'>) => {
           imageUrl={item.item.imageUrl}
           price={item.item.price}
           id={item.item.id}
-          description={item.item.description}
           title={item.item.title}
+          onViewPress={() => {
+            navigation.navigate('ProductDetail', {
+              name: item.item.title,
+            });
+          }}
         />
       )}
     />

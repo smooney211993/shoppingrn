@@ -4,18 +4,17 @@ import { colors } from '../../constants/Colors';
 
 interface ProductItemProps {
   id: string;
-  ownerId: string;
   imageUrl: string;
-  description: string;
   price: number;
   title: string;
+  onViewPress: () => void;
 }
 
 const ProductItem: FC<ProductItemProps> = ({
   imageUrl,
   title,
   price,
-  description,
+  onViewPress,
 }) => {
   return (
     <View style={styles.product}>
@@ -28,7 +27,11 @@ const ProductItem: FC<ProductItemProps> = ({
       </View>
 
       <View style={styles.actions}>
-        <Button color={colors.primary} title='View Details' />
+        <Button
+          color={colors.primary}
+          onPress={onViewPress}
+          title='View Details'
+        />
         <Button color={colors.accent} title='Add To Card' />
       </View>
     </View>

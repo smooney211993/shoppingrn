@@ -4,6 +4,7 @@ import { colors } from '../constants/Colors';
 
 import { createStackNavigator } from '@react-navigation/stack';
 import ProductOverview from '../screens/ProductsOverview';
+import ProductDetail from '../screens/ProductDetail';
 
 interface ShopNavigatorProps {}
 
@@ -23,6 +24,7 @@ const ShopNavigator: FC<ShopNavigatorProps> = ({}) => {
           headerTintColor: 'white',
         }}
       />
+      <ShopStack.Screen name='ProductDetail' component={ProductDetail} />
     </ShopStack.Navigator>
   );
 };
