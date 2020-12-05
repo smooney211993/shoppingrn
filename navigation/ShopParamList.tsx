@@ -5,6 +5,7 @@ export type ShopParamList = {
   Product: undefined;
   ProductDetail: {
     name: string;
+    id: string;
   };
 };
 

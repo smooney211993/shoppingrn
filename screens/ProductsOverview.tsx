@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { ShopNavProps } from '../navigation/ShopParamList';
 import ProductItem from '../components/shop/ProductItem';
 
-const ProductsOverview = ({ navigation }: ShopNavProps<'Product'>) => {
+const ProductsOverview = ({ navigation}: ShopNavProps<'Product'>) => {
   const { availableProducts } = useSelector(
     (state: AppState) => state.productReducer
   );
@@ -21,6 +21,7 @@ const ProductsOverview = ({ navigation }: ShopNavProps<'Product'>) => {
           onViewPress={() => {
             navigation.navigate('ProductDetail', {
               name: item.item.title,
+              id: item.item.id,
             });
           }}
         />

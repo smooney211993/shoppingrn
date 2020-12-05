@@ -1,12 +1,5 @@
 import PRODUCT from '../models/dummy-data';
-interface ProductItem {
-  id: string;
-  ownerId: string;
-  imageUrl: string;
-  description: string;
-  price: number;
-  title: string;
-}
+import { ProductItem } from './types';
 
 interface productState {
   availableProducts: ProductItem[];

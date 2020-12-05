@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { ShopParamList } from './ShopParamList';
 import { colors } from '../constants/Colors';
+import { Platform } from 'react-native';
 
 import { createStackNavigator } from '@react-navigation/stack';
 import ProductOverview from '../screens/ProductsOverview';
@@ -19,12 +20,21 @@ const ShopNavigator: FC<ShopNavigatorProps> = ({}) => {
         options={{
           title: 'Products',
           headerStyle: {
-            backgroundColor: colors.primary,
+            backgroundColor: Platform.OS === 'android' ? colors.primary : '',
           },
-          headerTintColor: 'white',
+          headerTintColor: Platform.OS === 'android' ? 'white' : colors.primary,
+          headerTitleStyle: {
+            fontFamily: 'open-sans-bold',
+          },
         }}
       />
-      <ShopStack.Screen name='ProductDetail' component={ProductDetail} />
+      <ShopStack.Screen
+        name='ProductDetail'
+        component={ProductDetail}
+        options={({ route }) => ({
+          headerTitle: `Product: ${route.params.name}`,
+        })}
+      />
     </ShopStack.Navigator>
   );
 };
