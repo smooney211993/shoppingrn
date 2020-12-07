@@ -7,6 +7,7 @@ export type ShopParamList = {
     name: string;
     id: string;
   };
+  Cart: undefined;
 };
 
 export type ShopNavProps<T extends keyof ShopParamList> = {

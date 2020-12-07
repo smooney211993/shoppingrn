@@ -1,4 +1,4 @@
-export  interface ProductItem {
+export interface ProductItem {
   id: string;
   ownerId: string;
   imageUrl: string;

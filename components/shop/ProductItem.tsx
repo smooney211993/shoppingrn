@@ -10,12 +10,16 @@ import {
   Platform,
 } from 'react-native';
 import { colors } from '../../constants/Colors';
+import { addToCart } from '../../reducers/cartReducer';
+import { useDispatch } from 'react-redux';
 
 interface ProductItemProps {
   id: string;
   imageUrl: string;
   price: number;
   title: string;
+  description: string;
+  ownerId: string;
   onViewPress: () => void;
 }
 
@@ -23,8 +27,12 @@ const ProductItem: FC<ProductItemProps> = ({
   imageUrl,
   title,
   price,
+  description,
+  ownerId,
+  id,
   onViewPress,
 }) => {
+  const dispatch = useDispatch();
   let TouchAbleCmp =
     Platform.OS === 'android' && Platform.Version >= 21
       ? TouchableNativeFeedback
@@ -52,7 +60,24 @@ const ProductItem: FC<ProductItemProps> = ({
                 onPress={onViewPress}
                 title='View Details'
               />
-              <Button color={colors.accent} title='Add To Card' />
+              <Button
+                color={colors.accent}
+                onPress={() =>
+                  dispatch(
+                    addToCart({
+                      item: {
+                        imageUrl,
+                        id,
+                        ownerId,
+                        description,
+                        price,
+                        title,
+                      },
+                    })
+                  )
+                }
+                title='Add To Card'
+              />
             </View>
           </View>
         </TouchAbleCmp>
